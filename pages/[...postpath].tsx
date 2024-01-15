@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://parzoom.com/vmvj9pdsr?key=aafc5688b250fc753247bef7c64a2a7a/`
+					`https://parlifestyle.blogspot.com/2024/01/parzaadlifestyle.html/` + encodeURI(path as string)
 				}`,
 			},
 		};
