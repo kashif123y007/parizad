@@ -4,8 +4,7 @@ import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const endpoint = "https://kashifyousaf.great-site.net/graphql"
-"
+	const endpoint = "https://kashifyousaf.great-site.net/graphql"; 
 	const graphQLClient = new GraphQLClient(endpoint);
 	const referringURL = ctx.req.headers?.referer || null;
 	const pathArr = ctx.query.postpath as Array<string>;
@@ -14,17 +13,43 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const fbclid = ctx.query.fbclid;
 
 	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('facebook.com') || fbclid) {
-
+	if (referringURL?.includes('facebook.com') || fbclid) {
 		return {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://parzoom.com/vmvj9pdsr?key=aafc5688b250fc753247bef7c64a2a7a/`
+					//
+					`https://parzoom.com/vmvj9pdsr?key=aafc5688b250fc753247bef7c64a2a7a`
 				}`,
 			},
 		};
-		}
+	}
+
+	// Your existing code logic goes here
+
+	// For example, fetching data from the GraphQL endpoint
+	const data = await graphQLClient.request(gql`{ /* Your GraphQL query here */ }`);
+
+	// Return props
+	return {
+		props: {
+			data,
+		},
+	};
+};
+
+// Your React component goes here
+const YourComponent = ({ data }) => {
+	// Your component logic goes here
+	return (
+		<div>
+			{/* Your JSX */}
+		</div>
+	);
+};
+
+export default YourComponent;
+
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
